@@ -1,11 +1,7 @@
-import React from 'react';
-//import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import { Menu, Button } from 'antd';
+import { Menu } from 'antd';
 import {
   AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   PieChartOutlined,
   DesktopOutlined,
   ContainerOutlined,
@@ -14,29 +10,14 @@ import {
 
 const { SubMenu } = Menu;
 
-class SideBar extends React.Component {
-  state = {
-    collapsed: false,
-  };
-
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-  render() {
+const SideBar = ({collapsed}) => {
     return (
-      <div style={{ width: 256 }}>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-          {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-        </Button>
-        <Menu
+<Menu
           defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          //defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
+          inlineCollapsed={collapsed}
         >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Option 1
@@ -62,9 +43,6 @@ class SideBar extends React.Component {
             </SubMenu>
           </SubMenu>
         </Menu>
-      </div>
-    );
-  }
+        )
 }
-
-export default  SideBar 
+        export default SideBar
